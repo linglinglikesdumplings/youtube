@@ -54,21 +54,14 @@
   const scaryImage = document.getElementById('scaryImage');
 
   continueBtn.addEventListener('click', () => {
-    // Hide the button
     continueBtn.style.display = 'none';
-
-    // Show the scary image
     scaryImage.style.display = 'block';
-
-    // Play scream sound
     screamSound.play().catch(() => {});
-
-    // Request fullscreen on the image
     if (scaryImage.requestFullscreen) {
       scaryImage.requestFullscreen();
-    } else if (scaryImage.webkitRequestFullscreen) { /* Safari */
+    } else if (scaryImage.webkitRequestFullscreen) {
       scaryImage.webkitRequestFullscreen();
-    } else if (scaryImage.msRequestFullscreen) { /* IE11 */
+    } else if (scaryImage.msRequestFullscreen) {
       scaryImage.msRequestFullscreen();
     }
   });
