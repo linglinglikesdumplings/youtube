@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Jumpscare Prank</title>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #scaryImage {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    object-fit: contain;
+    user-select: none;
+    background: black;
+    z-index: 9998;
+  }
+  #continueButton {
+    padding: 25px 60px;
+    font-size: 28px;
+    font-weight: bold;
+    background: rgba(255, 0, 0, 0.9);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    user-select: none;
+    box-shadow: 0 0 20px 5px red;
+    transition: background 0.3s ease;
+    z-index: 9999;
+  }
+  #continueButton:hover {
+    background: rgba(255, 0, 0, 1);
+  }
+</style>
+</head>
+<body>
+
+<img id="scaryImage" src="hehe.png" alt="Scary Image" />
+
+<button id="continueButton">Continue</button>
+
+<audio id="screamSound" src="hehe.mp3" preload="auto"></audio>
+
+<script>
+  const continueBtn = document.getElementById('continueButton');
+  const screamSound = document.getElementById('screamSound');
+  const scaryImage = document.getElementById('scaryImage');
+
+  continueBtn.addEventListener('click', () => {
+    // Hide the button
+    continueBtn.style.display = 'none';
+
+    // Show the scary image
+    scaryImage.style.display = 'block';
+
+    // Play scream sound
+    screamSound.play().catch(() => {});
+
+    // Request fullscreen on the image
+    if (scaryImage.requestFullscreen) {
+      scaryImage.requestFullscreen();
+    } else if (scaryImage.webkitRequestFullscreen) { /* Safari */
+      scaryImage.webkitRequestFullscreen();
+    } else if (scaryImage.msRequestFullscreen) { /* IE11 */
+      scaryImage.msRequestFullscreen();
+    }
+  });
+</script>
+
+</body>
+</html>
